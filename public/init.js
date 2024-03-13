@@ -3,10 +3,10 @@ if (typeof firebase === 'undefined') throw new Error('hosting/init-error: Fireba
 
 var firebaseConfig = {
 
-	"apiKey" : "API_KEY",
-	"appId" : "APP_ID",
-	"authDomain" : "AUTH_DOMAIN",
-	"projectId" : "PROJECT_ID",
+	"apiKey" : "AIzaSyB0NY4Q7L1Xf4VtpmH5xkfMXDhPrODPivg",
+	"appId" : "1:849272530588:web:2bf5bdc9ed399e2dffef59",
+	"authDomain" : "gpstrackingapi.firebaseapp.com",
+	"projectId" : "gpstrackingapi",
 
 };
 
