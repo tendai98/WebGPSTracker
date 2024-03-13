@@ -21,7 +21,6 @@ function gps(req, res){
 	try{
 		let ref = fb.database().ref(req.query.id)
 		let target = ref.child(req.query.target)
-		console.log(req.query)
 
 		target.on("value", data => {
 			res.json(data.val())
@@ -44,7 +43,6 @@ function api(req, res){
 		let timestamp = getTimestamp()
 		delete data.id
 
-		console.table(req.query)
 		data.timestamp = timestamp
 
 		ref.child("currentTrackerData").set(data)
