@@ -3,7 +3,7 @@ const firebase = require('firebase')
 const config = require('./config')
 const auth = require('./auth')
 
-const port = 80
+const port = process.env.PORT
 const fb = firebase.initializeApp(config)
 let authed = false
 
