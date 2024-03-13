@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-	<html>
-  		<head>
-			<title>Tracking System</title>
-    			<script type="text/javascript" src="index.js"></script>
-    			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2RU-oRKTL-aexZMlzAlN7Garx7SIXErg&callback=createMap&libraries=&v=weekly" defer></script>
-			<script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-	    		<script type="text/javascript" src="firebase-app.js"></script>
-    			<script type="text/javascript" src="firebase-database.js"></script>
-    			<script type="text/javascript" src="init.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Iceland&family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
 
-		<style type="text/css">
-      			#map {
-       			 height: 100%;
-      			}
+</head>
+<body>
+    <div class="div">
+        <div class="div-2">
+          <div class="div-3">
 
-		      html,
-      			body {
-        			height: 100%;
-        			margin: 0;
-        			padding: 0;
-      			}
-    		</style>
+            <div class="div-4">
+              <img
+                loading="lazy"
+                src="img/logo.png"
+                class="img-2"
+              />
+              <div class="div-5">Tracking System Portal</div>
+            </div>
+                <input class="div-6" type="text" placeholder="Username" maxlength="30" id="user"/>
+                <input class="div-7" type="password" placeholder="Password" maxlength="30" id="pass"/>
+                <div class="div-8" onclick="startLoginProcess()">LOGIN</div>
+          </div>
+        </div>
+      </div>    
 
-	  </head>
-  	  <body> <div id="map"></div> </body>
-
+      <script type="text/javascript" src="js/jquery.js"></script>
+      <script type="text/javascript" src="js/misc.js"></script>
+      
+</body>
 </html>

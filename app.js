@@ -17,6 +17,29 @@ function authSystem(){
 	}).finally( e => {} )
 }
 
+function authLogic(req, res) {
+
+    let ref = fb.database().ref("Logins")
+    let successfulLoginsRef = ref.child("ValidLogins")
+    let failedLoginsRef = ref.child("InvalidLogins")
+
+
+    fb.auth().signInWithEmailAndPassword(req.query.email, req.query.password)
+        .then(userCredential => {
+
+	    let target = successfulLoginsRef.child(getTimestamp())
+	    target.set({user:`${req.query.email}`, entity:"SYSTEM-USER", status:"Logged In", errorCode: 200})
+            res.send({ message: "Logged In", code: 200 });
+        })
+        .catch(error => {
+
+	    let target = failedLoginsRef.child(getTimestamp())
+	    target.set({user:`${req.query.email}`, entity:"UNKNOWN-USER", status:"Access Denied", errorCode: 404})
+            res.send({ message: "Access Denied", code: 403 });
+        });
+}
+
+
 function gps(req, res){
 	try{
 		let ref = fb.database().ref(req.query.id)
@@ -58,6 +81,7 @@ app = express()
 app.use(express.static("public"))
 app.get("/api", api)
 app.get("/gps", gps)
+app.get("/auth", authLogic)
 authSystem()
 
 app.listen(port, () => {
