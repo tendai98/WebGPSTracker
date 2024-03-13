@@ -21,9 +21,10 @@ function createMarkers(trackerID, info){
 
 		let lat = info["currentTrackerData"]["lt"]
 		let lon = info["currentTrackerData"]["ln"]
+		let speed = info["currentTrackerData"]["sd"]
 
 		const trackerInfo = new google.maps.InfoWindow({
-			content: `<p style='font-size:16px'><b>${trackerID}</b></p>`
+			content: `<p style='font-size:16px'><b>${trackerID} > Speed:${speed} km/h</b></p>`
 		});
 
 		if(markers[trackerID]){
