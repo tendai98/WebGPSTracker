@@ -22,8 +22,6 @@ function createMarkers(trackerID, info){
 		let lat = info["currentTrackerData"]["lat"]
 		let lon = info["currentTrackerData"]["lon"]
 
-		console.log(lat, lon)
-
 		const trackerInfo = new google.maps.InfoWindow({
 			content: `<p style='font-size:16px'><b>${trackerID}</b></p>`
 		});
