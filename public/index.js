@@ -19,8 +19,8 @@ function createMarkers(trackerID, info){
 
 	if(info["currentTrackerData"]){
 
-		let lat = info["currentTrackerData"]["lat"]
-		let lon = info["currentTrackerData"]["lon"]
+		let lat = info["currentTrackerData"]["lt"]
+		let lon = info["currentTrackerData"]["ln"]
 
 		const trackerInfo = new google.maps.InfoWindow({
 			content: `<p style='font-size:16px'><b>${trackerID}</b></p>`
