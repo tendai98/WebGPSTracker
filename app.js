@@ -77,11 +77,27 @@ function api(req, res){
 	}
 }
 
+let GLOBAL_LATITUDE = -18.383322
+let GLOBAL_LONGITUDE = 29.828132
+
+function geoOut(req, res){
+	res.send(`${GLOBAL_LATITUDE},${GLOBAL_LONGITUDE}`)
+}
+
+function getIn(req, res){
+
+	GLOBAL_LATITUDE = parseFloat(req.query.latitude)
+	GLOBAL_LONGITUDE = parseFloat(req.query.longitude)
+	res.send("DATA SET")
+}
+
 app = express()
 app.use(express.static("public"))
 app.get("/api", api)
 app.get("/gps", gps)
 app.get("/auth", authLogic)
+app.get("/geo-out", geoOut)
+app.get("/geo-in", geoIn)
 authSystem()
 
 app.listen(port, () => {
