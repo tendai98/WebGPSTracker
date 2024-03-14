@@ -60,6 +60,7 @@ function api(req, res){
 		}
 
 		let data = req.query
+
 		let id = req.query.id
 		let ref = fb.database().ref(id)
 		let logRef = fb.database().ref("TrackerLog").child(id)
@@ -68,8 +69,14 @@ function api(req, res){
 
 		data.timestamp = timestamp
 
-		ref.child("currentTrackerData").set(data)
-		logRef.child(timestamp.toString()).set(data)
+		let lt = parseFloat(data.lt)
+		let ln = parseFloat(data.ln)
+
+		if(lt != 0){
+			ref.child("currentTrackerData").set(data)
+			logRef.child(timestamp.toString()).set(data)
+		}
+
 		res.end()
 	}catch(e){
 		console.log(e)
@@ -77,27 +84,13 @@ function api(req, res){
 	}
 }
 
-let GLOBAL_LATITUDE = -18.383322
-let GLOBAL_LONGITUDE = 29.828132
-
-function geoOut(req, res){
-	res.send(`${GLOBAL_LATITUDE},${GLOBAL_LONGITUDE}`)
-}
-
-function getIn(req, res){
-
-	GLOBAL_LATITUDE = parseFloat(req.query.latitude)
-	GLOBAL_LONGITUDE = parseFloat(req.query.longitude)
-	res.send("DATA SET")
-}
 
 app = express()
 app.use(express.static("public"))
 app.get("/api", api)
 app.get("/gps", gps)
 app.get("/auth", authLogic)
-app.get("/geo-out", geoOut)
-app.get("/geo-in", geoIn)
+
 authSystem()
 
 app.listen(port, () => {
