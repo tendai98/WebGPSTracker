@@ -77,7 +77,7 @@ function api(req, res){
 			logRef.child(timestamp.toString()).set(data)
 		}
 
-		res.end()
+		res.send("DATA RECV")
 	}catch(e){
 		console.log(e)
 		res.end()
